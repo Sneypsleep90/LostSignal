@@ -1,73 +1,67 @@
 # Lost Signal
 
-Lost Signal — атмосферное React-приложение для отслеживания дней вдали от цифрового шума. Интерфейс построен как тихое путешествие вглубь темного северного леса: крупный счетчик дней, возвращенные часы, текущая локация, дата начала и минимальная шкала прогресса.
+Тёмное React-приложение про уход от цифрового шума.  
+Lost Signal показывает, сколько дней пользователь идёт дальше от шума, сколько времени вернулось, где он сейчас на маршруте и сколько осталось до первого рубежа.
 
-## Stack
+Интерфейс держится на образе ночного северного леса: туман, слабый сигнал, стеклянные панели, приглушённый зелёный акцент и минимум текста.
+
+## Что готово
+
+- fullscreen onboarding с выбором шума, времени, даты старта и первого рубежа;
+- профиль `signalProfile` в `localStorage` по ключу `lost_signal_profile`;
+- миграция старого ключа `lost_signal_start`;
+- главный экран с днями, возвращённым временем, текущей локацией и маршрутом;
+- тёмный лесной фон, fog/noise layers и спокойные анимации;
+- reset flow: `Начать заново` через подтверждение.
+
+## Стек
 
 - React
 - Vite
+- pnpm
 - Framer Motion
 - localStorage
-- Modular CSS files in `src/styles/`
+- CSS в `src/styles/`
 
-## Install
+## Запуск
 
 ```bash
 pnpm install
-```
-
-## Run Locally
-
-```bash
 pnpm run dev
 ```
 
-По умолчанию Vite поднимает локальный dev-сервер, например:
+Локальный адрес Vite:
 
 ```text
 http://localhost:5173/
 ```
 
-## Production Build
+## Сборка
 
 ```bash
 pnpm run build
 ```
 
-## Project Structure
+## Структура
 
 ```text
-.
-├── design/
-│   └── README.md
-├── src/
-│   ├── components/
-│   │   ├── AppHeader.jsx
-│   │   ├── ForestBackground.jsx
-│   │   ├── HeroCounter.jsx
-│   │   ├── JourneyProgress.jsx
-│   │   ├── Onboarding.jsx
-│   │   └── StatisticsPanel.jsx
-│   ├── constants/
-│   │   └── journey.js
-│   ├── styles/
-│   │   ├── background.css
-│   │   ├── base.css
-│   │   ├── components.css
-│   │   ├── layout.css
-│   │   ├── onboarding.css
-│   │   └── responsive.css
-│   ├── utils/
-│   │   ├── computeStats.js
-│   │   ├── formatDate.js
-│   │   └── storage.js
-│   ├── App.jsx
-│   └── main.jsx
-├── CHANGELOG.md
-├── PROJECT_CONTEXT.md
-├── README.md
-├── index.html
-├── package.json
-├── pnpm-lock.yaml
-└── vite.config.js
+src/
+  assets/        # фон и локальные ассеты
+  components/    # UI-компоненты
+  constants/     # targets, themes, journey
+  styles/        # базовые стили, layout, background, responsive
+  utils/         # storage, dates, progress, format, stats
+  App.jsx
+  main.jsx
+
+design/          # визуальные референсы и дизайн-контекст
+docs/            # правила, продуктовая идея, архитектурный контекст
+tasks/           # история задач и дальнейшие шаги
 ```
+
+## Документы
+
+- [docs/product-vision.md](docs/product-vision.md) — суть продукта и тон.
+- [design/visual-language.md](design/visual-language.md) — визуальный язык.
+- [docs/codex-rules.md](docs/codex-rules.md) — правила работы над проектом.
+- [tasks/TASKS.md](tasks/TASKS.md) — история сделанных задач и ближайшие шаги.
