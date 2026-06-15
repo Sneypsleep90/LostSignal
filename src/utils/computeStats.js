@@ -1,23 +1,43 @@
-import { getJourneyLocation } from "../constants/journey.js";
+import { getTargetById } from "../constants/targets.js";
+import { formatReturnedTime } from "./format.js";
+import { getDaysAway } from "./dates.js";
+import {
+  getCurrentJourneyStage,
+  getJourneyProgress,
+  getRemainingDays,
+  hasReachedGoal,
+} from "./progress.js";
 
-const DAY_IN_MS = 86_400_000;
-
-export function computeStats(startDate) {
-  if (!startDate) {
+export function computeStats(profile) {
+  if (!profile?.startDate) {
     return {
       days: 0,
+      returnedMinutes: 0,
+      returnedTime: formatReturnedTime(0),
       hours: 0,
-      location: getJourneyLocation(0),
+      currentStage: getCurrentJourneyStage(0, 30),
+      location: getCurrentJourneyStage(0, 30).ruName,
+      progress: 0,
+      remainingDays: 30,
+      hasReachedGoal: false,
+      target: getTargetById(),
     };
   }
 
-  const start = new Date(`${startDate}T00:00:00`);
-  const elapsed = Date.now() - start.getTime();
-  const days = Math.max(0, Math.floor(elapsed / DAY_IN_MS));
+  const days = getDaysAway(profile.startDate);
+  const returnedMinutes = days * profile.dailyUsageMinutes;
+  const stage = getCurrentJourneyStage(days, profile.goalDays);
 
   return {
     days,
-    hours: days * 2,
-    location: getJourneyLocation(days),
+    returnedMinutes,
+    returnedTime: formatReturnedTime(returnedMinutes),
+    hours: returnedMinutes / 60,
+    currentStage: stage,
+    location: stage.ruName,
+    progress: getJourneyProgress(days, profile.goalDays),
+    remainingDays: getRemainingDays(days, profile.goalDays),
+    hasReachedGoal: hasReachedGoal(days, profile.goalDays),
+    target: getTargetById(profile.target),
   };
 }

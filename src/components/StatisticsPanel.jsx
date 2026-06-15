@@ -33,7 +33,15 @@ function StatIcon({ type }) {
   );
 }
 
-export default function StatisticsPanel({ hours, location, startDate }) {
+export default function StatisticsPanel({
+  returnedTime,
+  hours,
+  location,
+  startDate,
+}) {
+  const returnedTimeLabel =
+    returnedTime ?? `${hours?.toLocaleString("ru-RU") ?? 0} часов`;
+
   return (
     <motion.section
       className="statistics-panel"
@@ -44,8 +52,8 @@ export default function StatisticsPanel({ hours, location, startDate }) {
       <div className="stat-row">
         <StatIcon type="clock" />
         <p className="hours">
-          <strong>{hours.toLocaleString("ru-RU")}</strong>
-          <span>часов возвращено</span>
+          <strong>{returnedTimeLabel}</strong>
+          <span>вернулось</span>
         </p>
       </div>
 

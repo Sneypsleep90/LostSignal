@@ -5,8 +5,14 @@
   place-items: center;
   isolation: isolate;
   background:
-    radial-gradient(circle at 52% 50%, rgba(74, 124, 89, 0.07), transparent 38%),
-    linear-gradient(180deg, #101412 0%, var(--bg) 48%, #080a09 100%);
+    linear-gradient(
+      to bottom,
+      rgba(13, 15, 14, 0.6),
+      rgba(13, 15, 14, 0.85)
+    ),
+    radial-gradient(circle at 52% 50%, rgba(74, 124, 89, 0.06), transparent 38%),
+    url("../assets/noisy-forest-bg.png") center / cover no-repeat,
+    var(--bg);
 }
 
 .app-shell::before {
@@ -141,29 +147,4 @@
   justify-items: center;
   width: 100%;
   padding: clamp(30px, 5vh, 48px) 0 0;
-}
-
-.dashboard-panel {
-  width: min(100%, 1088px);
-  min-height: 520px;
-  padding: 48px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--surface);
-  backdrop-filter: blur(12px);
-}
-
-.dashboard-panel__grid {
-  display: grid;
-  min-height: 344px;
-  grid-template-columns: 0.94fr 1fr;
-  align-items: center;
-}
-
-.counter-column {
-  display: grid;
-  min-height: 344px;
-  place-items: center;
-  border-right: 1px solid var(--border);
-  padding-right: 48px;
 }

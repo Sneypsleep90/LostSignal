@@ -1,53 +1,60 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import AppHeader from "./components/AppHeader.jsx";
 import ForestBackground from "./components/ForestBackground.jsx";
-import HeroCounter from "./components/HeroCounter.jsx";
-import JourneyProgress from "./components/JourneyProgress.jsx";
 import Onboarding from "./components/Onboarding.jsx";
-import StatisticsPanel from "./components/StatisticsPanel.jsx";
+import OverviewCard from "./components/OverviewCard.jsx";
 import { computeStats } from "./utils/computeStats.js";
-import { formatStartDate } from "./utils/formatDate.js";
-import { storage } from "./utils/storage.js";
+import {
+  getSignalProfile,
+  resetSignalProfile,
+  saveSignalProfile,
+} from "./utils/storage.js";
 
-function getInitialStartDate() {
+function getInitialProfile() {
   const params = new URLSearchParams(window.location.search);
 
   if (params.has("reset")) {
-    storage.clear();
+    resetSignalProfile();
     return null;
   }
 
-  return storage.get();
+  return getSignalProfile();
 }
 
 export default function App() {
-  const [startDate, setStartDate] = useState(getInitialStartDate);
-  const [stats, setStats] = useState(() => computeStats(startDate));
+  const [profile, setProfile] = useState(getInitialProfile);
+  const [stats, setStats] = useState(() => computeStats(profile));
 
   useEffect(() => {
-    setStats(computeStats(startDate));
+    setStats(computeStats(profile));
 
-    if (!startDate) {
+    if (!profile?.startDate) {
       return undefined;
     }
 
     const interval = window.setInterval(() => {
-      setStats(computeStats(startDate));
+      setStats(computeStats(profile));
     }, 60_000);
 
     return () => window.clearInterval(interval);
-  }, [startDate]);
+  }, [profile]);
 
-  const formattedDate = formatStartDate(startDate);
-
-  function handleStart(date) {
-    storage.set(date);
+  function handleComplete(profileDraft) {
+    const nextProfile = saveSignalProfile(profileDraft);
     if (new URLSearchParams(window.location.search).has("reset")) {
       window.history.replaceState(null, "", window.location.pathname);
     }
-    setStartDate(date);
-    setStats(computeStats(date));
+    setProfile(nextProfile);
+    setStats(computeStats(nextProfile));
+  }
+
+  if (!profile) {
+    return (
+      <main className="app-shell app-shell--entry" aria-label="Lost Signal">
+        <ForestBackground />
+        <Onboarding onComplete={handleComplete} />
+      </main>
+    );
   }
 
   return (
@@ -58,41 +65,11 @@ export default function App() {
         <AppHeader />
 
         <div className="center-stage">
-          <motion.section
-            className="dashboard-panel"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.05, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="dashboard-panel__grid">
-              <div className="counter-column">
-                <HeroCounter days={stats.days} />
-              </div>
-
-              <StatisticsPanel
-                hours={stats.hours}
-                location={stats.location}
-                startDate={formattedDate}
-              />
-            </div>
-
-            <JourneyProgress days={stats.days} />
-          </motion.section>
-
-          <motion.p
-            className="quiet-line"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.86, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Тишина — это не отсутствие звуков, а присутствие себя.
-          </motion.p>
+          <OverviewCard profile={profile} stats={stats} />
         </div>
 
         <div aria-hidden="true" />
       </section>
-
-      {!startDate && <Onboarding onStart={handleStart} />}
     </main>
   );
 }

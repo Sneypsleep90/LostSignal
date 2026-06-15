@@ -1,68 +1,68 @@
-import { motion } from "framer-motion";
-import {
-  JOURNEY_MILESTONES,
-} from "../constants/journey.js";
+import { JOURNEY_STAGES } from "../constants/journey.js";
+import { getJourneyProgress } from "../utils/progress.js";
 
 function getPosition(index) {
-  return (index / (JOURNEY_MILESTONES.length - 1)) * 100;
+  return (index / (JOURNEY_STAGES.length - 1)) * 100;
 }
 
-function getCurrentIndex(days) {
-  return JOURNEY_MILESTONES.reduce((currentIndex, milestone, index) => {
-    return days >= milestone.day ? index : currentIndex;
-  }, 0);
+function getPointOffset(index) {
+  const progress = index / (JOURNEY_STAGES.length - 1);
+  return 43 - progress * 86;
 }
 
-export default function JourneyProgress({ days }) {
-  const currentIndex = getCurrentIndex(days);
-  const completedIndex =
-    currentIndex === JOURNEY_MILESTONES.length - 1
-      ? currentIndex
-      : Math.max(currentIndex - 1, 0);
-  const progress = getPosition(completedIndex);
+function getCurrentIndex(days, goalDays) {
+  const progress = getJourneyProgress(days, goalDays);
+  const lastIndex = JOURNEY_STAGES.length - 1;
+
+  return progress >= 1 ? lastIndex : Math.floor(progress * lastIndex);
+}
+
+export default function JourneyProgress({ days, goalDays = 30 }) {
+  const currentIndex = getCurrentIndex(days, goalDays);
+  const progress = getJourneyProgress(days, goalDays);
+  const progressPercent = progress * 100;
+  const fillOffset = progress * 86;
 
   return (
-    <motion.div
+    <div
       className="journey-progress"
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, delay: 0.68, ease: [0.16, 1, 0.3, 1] }}
-      aria-label={`Пройдено ${Math.round(progress)} процентов пути`}
+      style={{
+        "--journey-progress": `calc(${progressPercent}% - ${fillOffset}px)`,
+      }}
+      aria-label={`Пройдено ${Math.round(progressPercent)} процентов пути`}
     >
       <div className="journey-progress__track" aria-hidden="true" />
-      <motion.div
+      <div
         className="journey-progress__fill"
-        initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
         aria-hidden="true"
       />
 
-      {JOURNEY_MILESTONES.map((milestone, index) => {
+      {JOURNEY_STAGES.map((stage, index) => {
+        const position = getPosition(index);
         const isComplete =
-          currentIndex === JOURNEY_MILESTONES.length - 1
+          currentIndex === JOURNEY_STAGES.length - 1
             ? index <= currentIndex
             : index < currentIndex;
         const isCurrent =
-          currentIndex !== JOURNEY_MILESTONES.length - 1 &&
           index === currentIndex;
 
         return (
-          <span
-            key={milestone.day}
+          <div
+            key={stage.id}
             className={[
-              "journey-progress__marker",
+              "journey-progress__point",
               isComplete ? "is-complete" : "",
               isCurrent ? "is-current" : "",
             ]
               .filter(Boolean)
               .join(" ")}
-            style={{ left: `${getPosition(index)}%` }}
-            aria-hidden="true"
-            title={milestone.label}
-          />
+            style={{ left: `calc(${position}% + ${getPointOffset(index)}px)` }}
+          >
+            <span className="journey-progress__marker" aria-hidden="true" />
+            <span className="journey-progress__label">{stage.ruName}</span>
+          </div>
         );
       })}
-    </motion.div>
+    </div>
   );
 }
