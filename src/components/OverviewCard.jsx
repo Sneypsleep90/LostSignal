@@ -83,7 +83,7 @@ function MetricItem({ icon, label, value, index }) {
   );
 }
 
-export default function OverviewCard({ profile, stats }) {
+export default function OverviewCard({ profile, stats, onResetRequest }) {
   const target = stats.target;
   const stage = stats.currentStage;
   const copy = getDashboardCopy(stats);
@@ -142,6 +142,16 @@ export default function OverviewCard({ profile, stats }) {
           <p className="overview-section-label">Твой маршрут</p>
           <JourneyProgress days={stats.days} goalDays={profile.goalDays} />
         </section>
+
+        <div className="overview-card__actions">
+          <button
+            className="overview-reset"
+            type="button"
+            onClick={onResetRequest}
+          >
+            Начать заново
+          </button>
+        </div>
       </section>
 
       <p className="quiet-line">{copy.footerText}</p>

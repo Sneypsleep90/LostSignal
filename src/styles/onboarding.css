@@ -116,8 +116,43 @@
   animation: questionReveal 420ms ease-out both;
 }
 
-.onboarding__step {
+.onboarding__topline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 0 0 4px;
+}
+
+.onboarding-back {
+  display: inline-grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  margin: -8px 0 -8px -8px;
+  border: 0;
+  border-radius: 999px;
+  outline: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.onboarding-back:hover,
+.onboarding-back:focus-visible {
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-primary);
+  transform: translate3d(-1px, 0, 0);
+}
+
+.onboarding__step {
+  margin: 0;
   color: var(--text-faint);
   font-size: 11px;
   font-weight: 600;

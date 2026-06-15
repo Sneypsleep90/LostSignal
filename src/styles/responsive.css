@@ -137,6 +137,10 @@
     font-size: 16px;
   }
 
+  .overview-card__actions {
+    justify-content: flex-start;
+  }
+
   .journey-progress {
     min-height: 112px;
   }
@@ -157,6 +161,20 @@
   .quiet-line {
     margin-top: 24px;
     font-size: 12px;
+  }
+
+  .reset-dialog-layer {
+    align-items: end;
+    padding: 18px;
+  }
+
+  .reset-dialog {
+    border-radius: 14px;
+  }
+
+  .reset-dialog__actions {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .tree-line--far {
@@ -210,7 +228,11 @@
   .journey-progress__fill,
   .journey-progress__point,
   .journey-progress__marker,
-  .quiet-line {
+  .quiet-line,
+  .onboarding-back,
+  .reset-dialog-layer,
+  .reset-dialog,
+  .overview-reset {
     animation: none;
     transition: none;
   }

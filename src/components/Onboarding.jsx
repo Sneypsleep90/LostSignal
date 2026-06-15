@@ -142,6 +142,10 @@ export default function Onboarding({ onComplete }) {
     setStep((currentStep) => Math.min(currentStep + 1, 5));
   }
 
+  function goBack() {
+    setStep((currentStep) => Math.max(currentStep - 1, 0));
+  }
+
   if (step === 0) {
     return (
       <section className="onboarding onboarding--intro" aria-label="Lost Signal">
@@ -162,11 +166,18 @@ export default function Onboarding({ onComplete }) {
 
   return (
     <form className="onboarding onboarding--questions" onSubmit={handleSubmit}>
-      <div
-        key={step}
-        className="onboarding__panel"
-      >
-        <p className="onboarding__step">0{step} / 05</p>
+      <div key={step} className="onboarding__panel">
+        <div className="onboarding__topline">
+          <button
+            className="onboarding-back"
+            type="button"
+            aria-label="Назад"
+            onClick={goBack}
+          >
+            ←
+          </button>
+          <p className="onboarding__step">0{step} / 05</p>
+        </div>
 
         {step === 1 && (
           <>

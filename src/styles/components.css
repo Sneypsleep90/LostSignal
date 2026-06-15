@@ -174,6 +174,35 @@
   gap: 22px;
 }
 
+.overview-card__actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+}
+
+.overview-reset {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  outline: none;
+  background: transparent;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.overview-reset:hover,
+.overview-reset:focus-visible {
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-muted);
+}
+
 .hero-counter {
   display: grid;
   justify-items: center;
@@ -294,6 +323,102 @@
   animation: quietLineReveal 760ms ease-out 920ms both;
 }
 
+.reset-dialog-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(4, 5, 5, 0.72);
+  backdrop-filter: blur(10px);
+  animation: dialogLayerReveal 220ms ease-out both;
+}
+
+.reset-dialog {
+  display: grid;
+  width: min(100%, 440px);
+  gap: 16px;
+  padding: clamp(26px, 4vw, 34px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.024)),
+    var(--surface);
+  backdrop-filter: blur(12px);
+  animation: dialogReveal 260ms ease-out both;
+}
+
+.reset-dialog__eyebrow {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.reset-dialog h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.reset-dialog p:not(.reset-dialog__eyebrow) {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.reset-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.reset-dialog__button {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(74, 124, 89, 0.48);
+  border-radius: 10px;
+  outline: none;
+  background: rgba(45, 74, 56, 0.22);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.reset-dialog__button:hover,
+.reset-dialog__button:focus-visible {
+  border-color: rgba(217, 219, 216, 0.34);
+  background: rgba(45, 74, 56, 0.32);
+}
+
+.reset-dialog__button--quiet {
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text-muted);
+}
+
+.reset-dialog__button--quiet:hover,
+.reset-dialog__button--quiet:focus-visible {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-primary);
+}
+
 @keyframes dashboardAppear {
   from {
     opacity: 0;
@@ -372,6 +497,28 @@
 
   to {
     transform: translate3d(2%, 0, 0);
+  }
+}
+
+@keyframes dialogLayerReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
