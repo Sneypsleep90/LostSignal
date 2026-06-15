@@ -1,0 +1,72 @@
+# Lost Signal
+
+Lost Signal — атмосферное React-приложение для отслеживания дней вдали от цифрового шума. Интерфейс построен как тихое путешествие вглубь темного северного леса: крупный счетчик дней, возвращенные часы, текущая локация, дата начала и минимальная шкала прогресса.
+
+## Stack
+
+- React
+- Vite
+- Framer Motion
+- localStorage
+- CSS в глобальном `<style>` внутри `index.html`
+
+## Install
+
+```bash
+pnpm install
+```
+
+## Run Locally
+
+```bash
+pnpm run dev
+```
+
+По умолчанию Vite поднимает локальный dev-сервер, например:
+
+```text
+http://localhost:5173/
+```
+
+## Production Build
+
+```bash
+pnpm run build
+```
+
+## Project Structure
+
+```text
+.
+├── design/
+│   └── README.md
+├── src/
+│   ├── components/
+│   │   ├── ForestBackground.jsx
+│   │   ├── HeroCounter.jsx
+│   │   ├── JourneyProgress.jsx
+│   │   ├── Onboarding.jsx
+│   │   └── StatisticsPanel.jsx
+│   ├── utils/
+│   │   ├── computeStats.js
+│   │   └── storage.js
+│   ├── App.jsx
+│   └── main.jsx
+├── CHANGELOG.md
+├── PROJECT_CONTEXT.md
+├── README.md
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+└── vite.config.js
+```
+
+## Design Folder
+
+Папка `design/` предназначена для дизайн-референсов: скриншотов, изображений, мокапов, UI-набросков и визуальных примеров, по которым можно повторять или улучшать дизайн Lost Signal.
+
+## Project Notes
+
+- Общий контекст проекта ведется в `PROJECT_CONTEXT.md`.
+- История изменений ведется в `CHANGELOG.md`.
+- Дата старта хранится в `localStorage` по ключу `lost_signal_start`.
