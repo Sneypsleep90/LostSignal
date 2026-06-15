@@ -15,7 +15,7 @@
     repeating-linear-gradient(
       104deg,
       transparent 0 28px,
-      rgba(230, 232, 227, 0.14) 29px 30px,
+      rgba(232, 233, 229, 0.12) 29px 30px,
       transparent 31px 74px
     );
   background-size: var(--rain-size) var(--rain-size);
@@ -23,13 +23,13 @@
 }
 
 .rain-layer--back {
-  --rain-opacity: 0.06;
+  --rain-opacity: 0.035;
   --rain-size: 180px;
   --rain-duration: 16s;
 }
 
 .rain-layer--front {
-  --rain-opacity: 0.09;
+  --rain-opacity: 0.055;
   --rain-size: 260px;
   --rain-duration: 11s;
 }
@@ -39,7 +39,7 @@
   left: -18vw;
   width: 136vw;
   height: var(--fog-height);
-  background: var(--secondary);
+  background: var(--text-muted);
   filter: blur(var(--fog-blur));
   opacity: var(--fog-opacity);
   transform: translate3d(0, 0, 0);
@@ -50,7 +50,7 @@
   top: 37%;
   --fog-height: 70px;
   --fog-blur: 34px;
-  --fog-opacity: 0.035;
+  --fog-opacity: 0.03;
   --fog-duration: 40s;
 }
 
@@ -58,7 +58,7 @@
   top: 69%;
   --fog-height: 130px;
   --fog-blur: 48px;
-  --fog-opacity: 0.072;
+  --fog-opacity: 0.075;
   --fog-duration: 52s;
 }
 
@@ -88,21 +88,21 @@
 .tree-line--far {
   --tree-bottom: 11vh;
   --tree-height: min(28vh, 240px);
-  --tree-opacity: 0.22;
+  --tree-opacity: 0.15;
   --tree-duration: 42s;
 }
 
 .tree-line--middle {
   --tree-bottom: 4vh;
   --tree-height: min(35vh, 300px);
-  --tree-opacity: 0.34;
+  --tree-opacity: 0.24;
   --tree-duration: 34s;
 }
 
 .tree-line--near {
   --tree-bottom: -8px;
   --tree-height: min(45vh, 390px);
-  --tree-opacity: 0.52;
+  --tree-opacity: 0.38;
   --tree-duration: 28s;
 }
 

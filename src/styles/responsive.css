@@ -42,7 +42,12 @@
     min-height: 260px;
     border-right: 0;
     border-bottom: 1px solid var(--panel-line);
+    padding-right: 0;
     padding-bottom: 38px;
+  }
+
+  .hero-counter {
+    margin-top: 0;
   }
 
   .statistics-panel {
@@ -63,7 +68,7 @@
 
   .brand {
     font-size: 10px;
-    letter-spacing: 0.34em;
+    letter-spacing: 0.4em;
   }
 
   .signal-line {
@@ -91,11 +96,12 @@
   }
 
   .hero-counter__number {
-    font-size: clamp(6.8rem, 31vw, 9.5rem);
+    font-size: clamp(5.6rem, 28vw, 8rem);
+    letter-spacing: -2px;
   }
 
   .hero-counter__label {
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .stat-row {
@@ -106,8 +112,8 @@
 
   .stat-icon,
   .stat-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 18px;
+    height: 18px;
   }
 
   .hours {
@@ -117,7 +123,7 @@
   }
 
   .location-name {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .journey-progress {

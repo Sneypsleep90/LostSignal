@@ -1,154 +1,164 @@
 .hero-counter {
   display: grid;
   justify-items: center;
+  margin-top: 0;
 }
 
 .hero-counter__number {
-  color: var(--text);
-  font-size: clamp(8.5rem, 15vw, 18.5rem);
-  font-weight: 900;
-  line-height: 0.78;
-  letter-spacing: 0;
+  color: var(--text-primary);
+  font-size: 160px;
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -4px;
   font-variant-numeric: tabular-nums;
 }
 
 .hero-counter__label {
-  margin-top: clamp(22px, 3vh, 34px);
-  color: var(--accent-soft);
-  font-size: clamp(18px, 1.6vw, 28px);
-  font-weight: 500;
-  letter-spacing: 0;
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .statistics-panel {
   display: grid;
   width: 100%;
-  max-width: 470px;
+  max-width: 440px;
   justify-self: center;
-  color: var(--secondary);
+  color: var(--text-muted);
 }
 
 .stat-row {
   display: grid;
-  grid-template-columns: 52px 1fr;
+  grid-template-columns: 28px 1fr;
   align-items: center;
-  gap: 28px;
-  min-height: 116px;
+  gap: 24px;
+  min-height: 104px;
 }
 
 .stat-icon {
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 20px;
+  height: 20px;
   place-items: center;
-  color: var(--accent-soft);
+  color: var(--inactive);
 }
 
 .stat-icon svg {
-  width: 36px;
-  height: 36px;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.35;
+  stroke-width: 1.6;
 }
 
 .stat-divider {
   width: 100%;
   height: 1px;
-  background: var(--panel-line);
+  background: var(--border);
 }
 
 .hours {
   display: flex;
   align-items: baseline;
-  gap: 15px;
+  gap: 10px;
   margin: 0;
-  color: var(--secondary);
-  font-size: clamp(16px, 1.4vw, 22px);
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  color: #d9dbd8;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .hours strong {
-  color: var(--accent-soft);
-  font-size: clamp(24px, 2vw, 32px);
-  font-weight: 700;
+  color: #d9dbd8;
+  font-size: 22px;
+  font-weight: 400;
 }
 
 .location-label {
-  margin: 0 0 18px;
-  color: var(--secondary);
+  margin: 0 0 14px;
+  color: var(--text-muted);
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.28em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   line-height: 1;
   text-transform: uppercase;
 }
 
 .location-name {
   margin: 0;
-  color: var(--text);
-  font-size: clamp(26px, 2.4vw, 34px);
-  font-weight: 800;
+  color: #d9dbd8;
+  font-size: 22px;
+  font-weight: 400;
   letter-spacing: 0;
 }
 
 .started {
   margin: 0;
-  color: var(--secondary);
-  font-size: clamp(15px, 1.2vw, 18px);
-  font-weight: 500;
+  color: #d9dbd8;
+  font-size: 16px;
+  font-weight: 400;
   letter-spacing: 0;
 }
 
 .journey-progress {
   position: relative;
   width: min(100%, 892px);
-  height: 34px;
-  margin: clamp(30px, 5vh, 54px) auto 0;
+  height: 28px;
+  margin: 42px auto 0;
 }
 
 .journey-progress__track,
 .journey-progress__fill {
   position: absolute;
-  top: 16px;
+  top: 13px;
   left: 0;
   height: 1px;
 }
 
 .journey-progress__track {
   width: 100%;
-  background: rgba(230, 232, 227, 0.18);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .journey-progress__fill {
   background: var(--accent);
-  opacity: 0.72;
 }
 
 .journey-progress__marker {
   position: absolute;
-  top: 10px;
-  width: 13px;
-  height: 13px;
-  border: 2px solid rgba(143, 154, 148, 0.54);
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--text-faint);
   border-radius: 999px;
-  background: rgba(11, 17, 16, 0.94);
+  background: var(--bg);
   transform: translateX(-50%);
 }
 
-.journey-progress__marker.is-reached {
+.journey-progress__marker.is-complete {
   border-color: var(--accent);
   background: var(--accent);
 }
 
+.journey-progress__marker.is-current {
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-color: var(--accent);
+  background: var(--bg);
+}
+
 .quiet-line {
-  margin: clamp(36px, 5vh, 62px) 0 0;
-  color: rgba(143, 154, 148, 0.52);
-  font-size: clamp(13px, 1.2vw, 16px);
-  font-weight: 500;
+  margin: 48px 0 0;
+  color: var(--text-faint);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 400;
   letter-spacing: 0;
   text-align: center;
 }

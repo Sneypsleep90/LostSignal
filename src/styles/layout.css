@@ -5,8 +5,8 @@
   place-items: center;
   isolation: isolate;
   background:
-    radial-gradient(circle at 50% 38%, rgba(143, 191, 168, 0.055), transparent 34%),
-    linear-gradient(180deg, #08100f 0%, var(--bg) 47%, #07100f 100%);
+    radial-gradient(circle at 52% 50%, rgba(74, 124, 89, 0.07), transparent 38%),
+    linear-gradient(180deg, #101412 0%, var(--bg) 48%, #080a09 100%);
 }
 
 .app-shell::before {
@@ -28,17 +28,18 @@
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.34), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.34)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 24%, transparent 72%, rgba(0, 0, 0, 0.32));
+    linear-gradient(to bottom, rgba(13, 15, 14, 0.6), rgba(13, 15, 14, 0.85)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.3), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.36));
 }
 
 .experience {
   position: relative;
   z-index: 3;
   display: grid;
-  width: min(100%, 1560px);
+  width: 100%;
   min-height: 100vh;
-  padding: 0 clamp(24px, 3vw, 48px) clamp(26px, 4vh, 46px);
+  padding: 0 clamp(24px, 3.55vw, 60px) clamp(26px, 4vh, 46px)
+    clamp(24px, 2.86vw, 48px);
   grid-template-rows: auto 1fr;
 }
 
@@ -47,24 +48,24 @@
   min-height: 118px;
   grid-template-columns: minmax(360px, 1fr) auto auto;
   align-items: center;
-  gap: clamp(16px, 2vw, 48px);
-  border-bottom: 1px solid rgba(230, 232, 227, 0.075);
-  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  gap: clamp(18px, 3.7vw, 62px);
+  border-bottom: 1px solid var(--border);
+  font-family: Inter, sans-serif;
 }
 
 .brand-zone {
   display: flex;
   align-items: baseline;
-  gap: clamp(16px, 1.8vw, 34px);
+  gap: clamp(18px, 2.38vw, 40px);
   min-width: 0;
 }
 
 .brand {
   margin: 0;
-  color: var(--secondary);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
@@ -72,10 +73,11 @@
 
 .signal-line {
   margin: 0;
-  color: var(--muted);
-  font-size: 14px;
+  color: var(--inactive);
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
+  opacity: 0.78;
   white-space: nowrap;
 }
 
@@ -84,10 +86,10 @@
   align-items: center;
   justify-content: center;
   gap: clamp(22px, 3vw, 72px);
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  color: var(--inactive);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .main-nav__item {
@@ -99,7 +101,7 @@
 }
 
 .main-nav__item.is-active {
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 .main-nav__item.is-active::after {
@@ -119,9 +121,9 @@
   width: 56px;
   height: 56px;
   place-items: center;
-  border: 1px solid rgba(143, 154, 148, 0.22);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  color: var(--secondary);
+  color: var(--inactive);
 }
 
 .forest-mark svg {
@@ -138,31 +140,30 @@
   align-content: center;
   justify-items: center;
   width: 100%;
-  padding: clamp(34px, 7vh, 92px) 0 0;
+  padding: clamp(30px, 5vh, 48px) 0 0;
 }
 
 .dashboard-panel {
   width: min(100%, 1088px);
   min-height: 520px;
-  padding: clamp(34px, 4.2vw, 62px) clamp(34px, 5vw, 90px) clamp(38px, 4vw, 58px);
-  border: 1px solid var(--panel-line-strong);
+  padding: 48px;
+  border: 1px solid var(--border);
   border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(18, 27, 24, 0.76), rgba(12, 18, 17, 0.56)),
-    var(--panel);
-  backdrop-filter: blur(18px);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
 }
 
 .dashboard-panel__grid {
   display: grid;
-  min-height: 330px;
+  min-height: 344px;
   grid-template-columns: 0.94fr 1fr;
   align-items: center;
 }
 
 .counter-column {
   display: grid;
-  min-height: 330px;
+  min-height: 344px;
   place-items: center;
-  border-right: 1px solid var(--panel-line);
+  border-right: 1px solid var(--border);
+  padding-right: 48px;
 }
