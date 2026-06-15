@@ -71,13 +71,3 @@ pnpm run build
 ├── pnpm-lock.yaml
 └── vite.config.js
 ```
-
-## Design Folder
-
-Папка `design/` предназначена для дизайн-референсов: скриншотов, изображений, мокапов, UI-набросков и визуальных примеров, по которым можно повторять или улучшать дизайн Lost Signal.
-
-## Project Notes
-
-- Общий контекст проекта ведется в `PROJECT_CONTEXT.md`.
-- История изменений ведется в `CHANGELOG.md`.
-- Дата старта хранится в `localStorage` по ключу `lost_signal_start`.
