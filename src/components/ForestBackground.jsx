@@ -79,6 +79,8 @@ export default function ForestBackground() {
 
   return (
     <div className="forest-background" aria-hidden="true">
+      <div className="rain-layer rain-layer--back" />
+      <div className="rain-layer rain-layer--front" />
       <div className="fog-layer fog-layer--high" />
       <div className="fog-layer fog-layer--middle" />
       <svg

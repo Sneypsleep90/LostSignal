@@ -1,0 +1,172 @@
+@media (max-width: 860px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .experience {
+    min-height: 100svh;
+    padding-bottom: 28px;
+  }
+
+  .top-bar {
+    min-height: 94px;
+    grid-template-columns: 1fr auto;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .brand-zone {
+    display: grid;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .dashboard-panel {
+    min-height: auto;
+  }
+
+  .dashboard-panel__grid {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .counter-column {
+    min-height: 260px;
+    border-right: 0;
+    border-bottom: 1px solid var(--panel-line);
+    padding-bottom: 38px;
+  }
+
+  .statistics-panel {
+    max-width: 100%;
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 620px) {
+  .experience {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .top-bar {
+    min-height: 82px;
+  }
+
+  .brand {
+    font-size: 10px;
+    letter-spacing: 0.34em;
+  }
+
+  .signal-line {
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  .forest-mark {
+    width: 46px;
+    height: 46px;
+  }
+
+  .center-stage {
+    padding-top: 28px;
+  }
+
+  .dashboard-panel {
+    padding: 28px 22px 30px;
+    border-radius: 12px;
+  }
+
+  .counter-column {
+    min-height: 230px;
+    padding-bottom: 30px;
+  }
+
+  .hero-counter__number {
+    font-size: clamp(6.8rem, 31vw, 9.5rem);
+  }
+
+  .hero-counter__label {
+    font-size: 18px;
+  }
+
+  .stat-row {
+    grid-template-columns: 40px 1fr;
+    gap: 18px;
+    min-height: 96px;
+  }
+
+  .stat-icon,
+  .stat-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hours {
+    display: grid;
+    gap: 4px;
+    font-size: 15px;
+  }
+
+  .location-name {
+    font-size: 24px;
+  }
+
+  .journey-progress {
+    margin-top: 28px;
+  }
+
+  .quiet-line {
+    margin-top: 24px;
+    font-size: 12px;
+  }
+
+  .tree-line--far {
+    --tree-height: 22vh;
+  }
+
+  .tree-line--middle {
+    --tree-height: 28vh;
+  }
+
+  .tree-line--near {
+    --tree-height: 36vh;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 1041px) {
+  .top-bar {
+    min-height: 94px;
+  }
+
+  .center-stage {
+    padding-top: 30px;
+  }
+
+  .dashboard-panel {
+    min-height: 450px;
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .dashboard-panel__grid,
+  .counter-column {
+    min-height: 292px;
+  }
+
+  .hero-counter__number {
+    font-size: clamp(8rem, 13vw, 14rem);
+  }
+
+  .quiet-line {
+    margin-top: 30px;
+  }
+}

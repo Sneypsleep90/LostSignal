@@ -1,20 +1,15 @@
 import { motion } from "framer-motion";
-
-const MILESTONES = [
-  { day: 0, label: "Опушка леса" },
-  { day: 7, label: "Глухие сосны" },
-  { day: 30, label: "Старая хижина" },
-  { day: 100, label: "Туманное озеро" },
-  { day: 180, label: "Тихая долина" },
-  { day: 365, label: "Lost Signal" },
-];
+import {
+  JOURNEY_MILESTONES,
+  getJourneyProgress,
+} from "../constants/journey.js";
 
 function getPosition(day) {
   return Math.min((day / 365) * 100, 100);
 }
 
 export default function JourneyProgress({ days }) {
-  const progress = Math.min((days / 365) * 100, 100);
+  const progress = getJourneyProgress(days);
 
   return (
     <motion.div
@@ -33,7 +28,7 @@ export default function JourneyProgress({ days }) {
         aria-hidden="true"
       />
 
-      {MILESTONES.map((milestone) => (
+      {JOURNEY_MILESTONES.map((milestone) => (
         <span
           key={milestone.day}
           className={`journey-progress__marker${

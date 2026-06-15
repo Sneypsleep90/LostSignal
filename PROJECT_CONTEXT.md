@@ -37,7 +37,7 @@ Lost Signal должен ощущаться не как привычный habit
 - Vite;
 - Framer Motion;
 - localStorage;
-- CSS в одном глобальном стиле внутри `index.html`.
+- CSS-модули проекта в `src/styles/`, подключенные через `src/main.jsx`.
 
 ## Архитектура
 
@@ -45,7 +45,10 @@ Lost Signal должен ощущаться не как привычный habit
 
 - `src/App.jsx` хранит состояние и связывает компоненты;
 - `src/components/` содержит визуальные компоненты;
+- `src/constants/journey.js` хранит этапы пути и расчет прогресса;
+- `src/styles/` содержит разделенные глобальные стили по зонам интерфейса;
 - `src/utils/computeStats.js` отвечает за расчет дней, часов и локации;
+- `src/utils/formatDate.js` отвечает за форматирование даты старта;
 - `src/utils/storage.js` инкапсулирует работу с `localStorage`;
 - ключ persistent storage: `lost_signal_start`.
 
